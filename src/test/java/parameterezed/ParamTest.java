@@ -14,8 +14,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.List;
 import java.util.stream.Stream;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$x;
+import static com.codeborne.selenide.Selenide.*;
+
 
 public class ParamTest {
 
@@ -75,6 +75,9 @@ public class ParamTest {
         Selenide.executeJavaScript("$('div.tippy-content').remove()");
 
         $$x("//div[@class = 'tags  info-block__tags ']/a").findBy(Condition.text(razdel)).click();
+        $x("//div[@class = 'tags  info-block__tags ']/a[@class = 'tags__item  active ']")
+                .shouldHave(Condition.exactText(razdel));
+
     }
 
 }
